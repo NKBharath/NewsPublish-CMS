@@ -7,7 +7,7 @@ const registeruser = async (req, res) => {
     try{
         const user = await UsersModel.findOne({email});
         if(user){
-            return res.status().json({
+            return res.status(109).json({
                 message: "User already exists",
                 success: false
             })
