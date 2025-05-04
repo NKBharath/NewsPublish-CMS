@@ -1,16 +1,18 @@
 import { Button } from '../../components/ui/button';
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { registeruser } from '../authslice';
+import { toast } from 'sonner';
 
 function Registerpage () {
-
+    const navigate = useNavigate();
     function handleSubmit(event) {
         event.preventDefault();
         const formdata = new FormData(event.target);
         registeruser(formdata).then((data)=>{
             if(data?.success){
-                alert("User Created Successfully")
+                toast.success("User registered successfully");
+                navigate('/auth/login');
             }
         })
 
