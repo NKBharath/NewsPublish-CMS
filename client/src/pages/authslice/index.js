@@ -1,22 +1,26 @@
 import axios from "axios";
 
 const registeruser = async (formdata) => {
-    try {
-      const res = await axios.post('http://localhost:3000/api/auth/register', {
-        username: formdata.username,
-        email: formdata.email,
-        password: formdata.password
-      }, {
+  const plainFormData = Object.fromEntries(formdata.entries()); // ✅ convert FormData to plain object
+
+  try {
+    const res = await axios.post(
+      'http://localhost:3000/api/auth/register',
+      plainFormData,
+      {
         headers: {
           'Content-Type': 'application/json',
         },
-        withCredentials: true // Optional based on your backend
-      });
-  
-      console.log("Response from server:", res.data);
-    } catch (error) {
-      console.error("Error during registration:", error);
-    }
-  };
+        withCredentials: true,
+      }
+    );
 
-  export { registeruser };
+    console.log("Response from server:", res.data);
+    return res.data;
+  } catch (error) {
+    console.error("Error during registration:", error);
+    return { error };
+  }
+};
+
+export { registeruser };

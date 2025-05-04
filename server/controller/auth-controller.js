@@ -2,7 +2,6 @@ const express = require('express');
 const UsersModel = require('../models/users.model');
 const bcrypt = require('bcryptjs');
 const registeruser = async (req, res) => {
-    console.log(req.body);
     const {username, email, password} = req.body;
     try{
         const user = await UsersModel.findOne({email});

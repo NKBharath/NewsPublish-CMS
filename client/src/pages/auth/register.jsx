@@ -9,7 +9,7 @@ function Registerpage () {
         event.preventDefault();
         const formdata = new FormData(event.target);
         registeruser(formdata).then((data)=>{
-            if(data?.payload?.success){
+            if(data?.success){
                 alert("User Created Successfully")
             }
         })
