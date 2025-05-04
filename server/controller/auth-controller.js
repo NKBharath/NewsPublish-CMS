@@ -6,7 +6,7 @@ const registeruser = async (req, res) => {
     try{
         const user = await UsersModel.findOne({email});
         if(user){
-            return res.status(109).json({
+            return res.json({
                 message: "User already exists",
                 success: false
             })
@@ -36,14 +36,14 @@ const loginuser = async(req,res)=>{
     try{
         const user = await UsersModel.findOne({email});
         if(!user){
-            return res.status(404).json({
+            return res.json({
                 success: false,
                 message: "User not found",
             })
         }
         const passwordMatch = await bcrypt.compare(password, user.password);
         if(!passwordMatch){
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 message: "Invalid credentials",
             })

@@ -3,16 +3,21 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { registeruser } from '../authslice';
 import { toast } from 'sonner';
+import { useDispatch } from 'react-redux';
 
 function Registerpage () {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     function handleSubmit(event) {
         event.preventDefault();
-        const formdata = new FormData(event.target);
-        registeruser(formdata).then((data)=>{
-            if(data?.success){
+        const form = new FormData(event.target);
+        const formdata = Object.fromEntries(form.entries());
+        dispatch(registeruser(formdata)).then((data)=>{
+            if(data?.payload?.success){
                 toast.success("User registered successfully");
                 navigate('/auth/login');
+            }else{
+                toast.error(data?.payload?.message );
             }
         })
 
