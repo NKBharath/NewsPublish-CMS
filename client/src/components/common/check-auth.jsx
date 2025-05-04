@@ -5,34 +5,34 @@ function Checkauth({ isAuthenticated, user, children }) {
   if (
     !isAuthenticated &&
     !(
-      location.pathname === "/auth/login" ||
-      location.pathname === "/auth/register"
+      location.pathname.includes("/login") ||
+      location.pathname.includes("/register")
     )
   ) {
     return <Navigate to="/auth/login" />;
   }
   if (
     isAuthenticated &&
-    (location.pathname === "/auth/login" ||
-      location.pathname === "/auth/register")
+    (location.pathname.includes("/login") ||
+      location.pathname.includes("/register"))
   ) {
     if (user?.role === "user") {
       return <Navigate to="/user/home" />;
-    } else if (user?.role === "publisher") {
+    } else  {
       return <Navigate to="/publisher/home" />;
     }
   }
   if (
     isAuthenticated &&
     user?.role === "publisher" &&
-    location.pathname === "/user/home"
+    location.pathname.includes("user")
   ) {
     return <Navigate to="/publisher/home" />;
   }
   if (
     isAuthenticated &&
     user?.role === "user" &&
-    location.pathname === "/publisher/home"
+    location.pathname.includes("publisher")
   ) {
     return <Navigate to="/user/home" />;
   }

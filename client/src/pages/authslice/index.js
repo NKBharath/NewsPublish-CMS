@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isAuthenticated: false,
   isLoading: false,
-  User: null,
+  user: null,
 };
 
 export const registeruser = createAsyncThunk('/auth/register',async(formdata)=>{
@@ -34,12 +34,12 @@ const authslice = createSlice({
       })
       .addCase(registeruser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.User = null;
+        state.user = null;
         state.isAuthenticated = false;
       })
       .addCase(registeruser.rejected, (state) => {
         state.isLoading = false;
-        state.User = null;
+        state.user = null;
         state.isAuthenticated = false;
       })
       .addCase(loginuser.pending, (state) => {
@@ -47,12 +47,12 @@ const authslice = createSlice({
       })
       .addCase(loginuser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.User = action.payload.user;
+        state.user = action.payload.user;
         state.isAuthenticated = true;
       })
       .addCase(loginuser.rejected, (state) => {
         state.isLoading = false;
-        state.User = null;
+        state.user = null;
         state.isAuthenticated = false;
       });
   }
