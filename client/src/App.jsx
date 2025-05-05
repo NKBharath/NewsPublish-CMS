@@ -9,8 +9,14 @@ import Publishlayout from './components/publisher/layout'
 import Publishhome from './pages/publisher/home'
 import Checkauth from './components/common/check-auth'
 import { useSelector } from 'react-redux'
+import Adminhome from './pages/admin/home'
+import Adminlayout from './components/admin/layout'
+import Addpublisher from './pages/admin/addpublisher'
+import AdminPublisherlist from './pages/admin/publisherlist'
 const App = () => {
-  const {user, isAuthenticated} = useSelector((state)=>(state.auth));
+  //const {user, isAuthenticated} = useSelector((state)=>(state.auth));
+  const user = "Publisher";
+  const isAuthenticated = true;
   return (
     <Routes>
       <Route path='/auth' element={
@@ -34,6 +40,15 @@ const App = () => {
         </Checkauth>
       }>
         <Route path='home' element={<Publishhome/>}/>
+      </Route>
+      <Route path='/admin' element={
+        <Checkauth isAuthenticated={isAuthenticated} user={user}>
+          <Adminlayout/>
+        </Checkauth>
+      }>
+        <Route path='home' element={<Adminhome/>}/>
+        <Route path='addpublisher' element={<Addpublisher/>}/>
+        <Route path='publisherlist' element={<AdminPublisherlist/>}/>
       </Route>
     </Routes>
   )

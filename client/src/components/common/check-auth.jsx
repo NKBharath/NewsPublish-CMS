@@ -18,7 +18,7 @@ function Checkauth({ isAuthenticated, user, children }) {
   ) {
     if (user?.role === "user") {
       return <Navigate to="/user/home" />;
-    } else  {
+    } else {
       return <Navigate to="/publisher/home" />;
     }
   }
@@ -36,8 +36,15 @@ function Checkauth({ isAuthenticated, user, children }) {
   ) {
     return <Navigate to="/user/home" />;
   }
-    return children;
-
+  if (
+    isAuthenticated &&
+    user?.role === "admin" &&
+    (location.pathname.includes("user") ||
+      location.pathname.includes("publisher"))
+  ) {
+    return <Navigate to="/admin/home" />;
+  }
+  return children;
 }
 
 export default Checkauth;

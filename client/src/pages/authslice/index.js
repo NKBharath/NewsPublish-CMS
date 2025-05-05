@@ -20,6 +20,13 @@ export const loginuser = createAsyncThunk('/auth/login',async(formdata)=>{
   return response.data;
 }
 );
+export const addpublisher = createAsyncThunk('/auth/publisher/registerpublisher', async(formdata)=>{
+  const response = await axios.post('http://localhost:3000/api/publisher/registerpublisher', formdata,{
+    withCredentials: true,
+  });
+  return response.data;
+})
+
 const authslice = createSlice({
   name: "auth",
   initialState,
