@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authroutes = require('./routes/auth-route');
 const publisherroutes = require('./routes/publisher.routes');
+const userroutes = require('./routes/user.routes');
 const cors = require('cors');
 
 mongoose.connect('mongodb://localhost:27017/newspublish').
@@ -25,7 +26,7 @@ app.use(express.json());
 
 app.use('/api/auth',authroutes);
 app.use('/api/publisher', publisherroutes);
-
+app.use('/api/user', userroutes);
 
 
 app.listen(PORT, () => {

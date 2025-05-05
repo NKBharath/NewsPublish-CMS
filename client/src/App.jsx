@@ -15,7 +15,7 @@ import Addpublisher from './pages/admin/addpublisher'
 import AdminPublisherlist from './pages/admin/publisherlist'
 const App = () => {
   //const {user, isAuthenticated} = useSelector((state)=>(state.auth));
-  const user = "Publisher";
+  const user = "admin";
   const isAuthenticated = true;
   return (
     <Routes>

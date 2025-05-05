@@ -30,6 +30,26 @@ const registerpublisher = async (req, res) => {
         })
     }
 }
+
+const viewpublisher = async(req, res) => {
+    try{
+        const publisher = await PublisherModel.find({}, "-password");
+        return res.status(200).json({
+            status:true,
+            message:"Publisher fetched successfully",
+            publisher,
+        })
+
+    }
+    catch(error){
+        res.status(500).json({
+            status:false,
+            message:"Internal server error",
+        })
+    }
+}
+
 module.exports = {
     registerpublisher,
+    viewpublisher,
 };
