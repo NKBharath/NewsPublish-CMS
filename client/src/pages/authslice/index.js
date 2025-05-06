@@ -36,6 +36,13 @@ export const viewpublisher = createAsyncThunk('/auth/publisher/viewpublisher', a
   return response.data.publisher;
 })
 
+export const deletepublisher = createAsyncThunk('/auth/publisher/deletepublisher', async(id)=>{
+  const response = await axios.delete(`http://localhost:3000/api/publisher/deletepublisher/${id}`,{
+    withCredentials: true,
+  })
+  return response.data;
+})
+
 const authslice = createSlice({
   name: "auth",
   initialState,

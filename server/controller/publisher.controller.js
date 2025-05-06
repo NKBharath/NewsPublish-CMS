@@ -1,4 +1,6 @@
+const { default: mongoose } = require("mongoose");
 const PublisherModel = require("../models/publisher.model");
+const ObjectId = mongoose.Types.ObjectId;
 
 const registerpublisher = async (req, res) => {
     const {name, email, category, mobileNumber, address} = req.body;
@@ -50,7 +52,32 @@ const viewpublisher = async(req, res) => {
     }
 }
 
+const deletepublisher = async(req, res)=>{
+    const id = req.params.id;
+    const query = {_id: new ObjectId(id)};
+    try{
+        const publisher = await PublisherModel.deleteOne(query);
+        if(!publisher){
+            return res.status(404).json({
+                status: false,
+                message: "Publisher not found",
+            })
+        }
+        return res.status(200).json({
+            success: true,
+            message: "Publisher deleted successfully",
+        })
+    } catch(error){
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error",
+        })
+    }
+}
+
 module.exports = {
     registerpublisher,
     viewpublisher,
+    deletepublisher,
 };
