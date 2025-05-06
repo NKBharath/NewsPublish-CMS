@@ -22,6 +22,20 @@ export const loginuser = createAsyncThunk('/auth/login',async(formdata)=>{
 }
 );
 
+export const viewuser = createAsyncThunk('/auth/user/viewuser', async()=>{
+  const response = await axios.get('http://localhost:3000/api/user/viewuser',{
+    withCredentials: true
+  })
+  return response.data.user;
+})
+
+export const deleteuser = createAsyncThunk('/auth/user/deleteuser', async(id)=>{
+  const response = await axios.delete(`http://localhost:3000/api/user/deleteuser/${id}`,{
+    withCredentials: true,
+  })
+  return response.data;
+})
+
 export const addpublisher = createAsyncThunk('/auth/publisher/registerpublisher', async(formdata)=>{
   const response = await axios.post('http://localhost:3000/api/publisher/registerpublisher', formdata,{
     withCredentials: true,
@@ -29,7 +43,7 @@ export const addpublisher = createAsyncThunk('/auth/publisher/registerpublisher'
   return response.data;
 })
 
-export const viewpublisher = createAsyncThunk('/auth/publisher/viewpublisher', async(formdata)=>{
+export const viewpublisher = createAsyncThunk('/auth/publisher/viewpublisher', async()=>{
   const response  = await axios.get('http://localhost:3000/api/publisher/viewpublisher', {
     withCredentials: true,
   })

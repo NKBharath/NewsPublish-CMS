@@ -32,7 +32,7 @@ function AllUsers() {
     }
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Registered Users</h1>
+      <h1 className="text-3xl font-bold mb-4">Publisher List</h1>
       <table className="w-full border border-collapse border-gray-300">
         <thead className="bg-gray-100">
           <tr>
@@ -54,7 +54,7 @@ function AllUsers() {
               <td className="border p-2">{user.category}</td>
               <td className="border p-2">{user.address}</td>
               <td className="border p-2">{user.mobileNumber}</td>
-              <td className='border p-2'>
+              <td className='border p-2 cursor-pointer'>
                 <button onClick={()=>{handleDelete(user._id)}}>❌</button>
               </td>
             </tr>
