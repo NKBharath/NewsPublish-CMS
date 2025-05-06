@@ -7,15 +7,27 @@ function Adminsidebar() {
       <div className="text-4xl font-bold tracking-tight text-black text-center mt-4">
         Admin panel
       </div>
-      <div onClick={()=>{navigate('/admin/viewpublisher')}} className="ml-2 text-2xl font-semibold tracking-tighter">
+      <div
+        onClick={() => {
+          navigate("/admin/viewpublisher");
+        }}
+        className="ml-2 text-2xl font-semibold tracking-tighter"
+      >
         Publisher List
       </div>
-      <div onClick={()=>{navigate('/admin/viewuser')}} className="ml-2 text-2xl font-semibold tracking-tighter">
+      <div
+        onClick={() => {
+          navigate("/admin/viewuser");
+        }}
+        className="ml-2 text-2xl font-semibold tracking-tighter"
+      >
         User List
       </div>
       <div
         className="ml-2 text-2xl font-semibold tracking-tighter cursor-pointer"
-        onClick={ () =>{ navigate("/admin/addpublisher")}}
+        onClick={() => {
+          navigate("/admin/addpublisher");
+        }}
       >
         Add Publisher
       </div>

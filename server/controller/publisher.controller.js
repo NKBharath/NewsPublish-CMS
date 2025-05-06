@@ -1,7 +1,7 @@
 const PublisherModel = require("../models/publisher.model");
 
 const registerpublisher = async (req, res) => {
-    const {name, email, category} = req.body;
+    const {name, email, category, mobileNumber, address} = req.body;
     try{
         const publisher = await PublisherModel.findOne({email});
         if(publisher){
@@ -14,6 +14,8 @@ const registerpublisher = async (req, res) => {
             name,
             email,
             category,
+            mobileNumber,
+            address,
         })
         await newPublisher.save();
         return res.status(200).json({

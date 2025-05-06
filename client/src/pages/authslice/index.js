@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   isAuthenticated: false,
   isLoading: false,
@@ -20,18 +21,21 @@ export const loginuser = createAsyncThunk('/auth/login',async(formdata)=>{
   return response.data;
 }
 );
+
 export const addpublisher = createAsyncThunk('/auth/publisher/registerpublisher', async(formdata)=>{
   const response = await axios.post('http://localhost:3000/api/publisher/registerpublisher', formdata,{
     withCredentials: true,
   });
   return response.data;
 })
+
 export const viewpublisher = createAsyncThunk('/auth/publisher/viewpublisher', async(formdata)=>{
   const response  = await axios.get('http://localhost:3000/api/publisher/viewpublisher', {
     withCredentials: true,
   })
   return response.data.publisher;
 })
+
 const authslice = createSlice({
   name: "auth",
   initialState,

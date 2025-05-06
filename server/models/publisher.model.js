@@ -28,13 +28,15 @@ const publisherSchema = new mongoose.Schema({
     },
     bio:{
         type:String,
-        required: true,
         maxlength:200,
     },
     joinedOn:{
         type: Date,
-        required: true,
         default: Date.now,
+    },
+    address:{
+        type: String,
+        required: true,
     }
     
 

@@ -14,7 +14,7 @@ function Addpublisher() {
     dispatch(addpublisher(formdata)).then((data) => {
       if (data?.payload?.success) {
         toast.success("Publisher added successfully");
-        navigate("/admin/publisherlist");
+        navigate("/admin/viewpublisher");
       } else {
         toast.error(data?.payload?.message || "something went rong");
       }
@@ -64,12 +64,32 @@ function Addpublisher() {
         </div>
         <div className="flex flex-col">
           <label className="text-lg font-semibold tracking-tight">
-            Publisher category
+            Mobile Number
           </label>
-          <button className="bg-blue-500 text-white rounded-md p-2 mt-4 hover:bg-blue-600">
-            Add Publisher
-          </button>
+          <input
+            type="tel"
+            name="mobileNumber"
+            className="border-2 border-gray-300 rounded-md p-2"
+            placeholder="Enter publisher mobile number"
+            required
+          />
         </div>
+        <div className="flex flex-col">
+          <label className="text-lg font-semibold tracking-tight">
+            Publisher Address
+          </label>
+          <input
+            type="tel"
+            name="address"
+            className="border-2 border-gray-300 rounded-md p-2"
+            placeholder="Enter publisher mobile number"
+            required
+          />
+        </div>
+        
+        <button className="bg-blue-500 text-white rounded-md p-2 mt-4 hover:bg-blue-600">
+          Add Publisher
+        </button>
       </form>
     </div>
   );
