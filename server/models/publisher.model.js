@@ -22,7 +22,6 @@ const publisherSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-
 })
 
 const PublisherModel = mongoose.model('publishers', publisherSchema);

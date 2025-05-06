@@ -26,7 +26,12 @@ export const addpublisher = createAsyncThunk('/auth/publisher/registerpublisher'
   });
   return response.data;
 })
-
+export const viewpublisher = createAsyncThunk('/auth/publisher/viewpublisher', async(formdata)=>{
+  const response  = await axios.get('http://localhost:3000/api/publisher/viewpublisher', {
+    withCredentials: true,
+  })
+  return response.data.publisher;
+})
 const authslice = createSlice({
   name: "auth",
   initialState,

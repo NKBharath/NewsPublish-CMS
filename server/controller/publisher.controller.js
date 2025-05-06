@@ -1,6 +1,5 @@
 const PublisherModel = require("../models/publisher.model");
 
-
 const registerpublisher = async (req, res) => {
     const {name, email, category} = req.body;
     try{

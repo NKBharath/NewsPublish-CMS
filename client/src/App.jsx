@@ -13,6 +13,7 @@ import Adminhome from './pages/admin/home'
 import Adminlayout from './components/admin/layout'
 import Addpublisher from './pages/admin/addpublisher'
 import AdminPublisherlist from './pages/admin/publisherlist'
+import AdminUserlist from './pages/admin/userlist'
 const App = () => {
   //const {user, isAuthenticated} = useSelector((state)=>(state.auth));
   const user = "admin";
@@ -48,7 +49,8 @@ const App = () => {
       }>
         <Route path='home' element={<Adminhome/>}/>
         <Route path='addpublisher' element={<Addpublisher/>}/>
-        <Route path='publisherlist' element={<AdminPublisherlist/>}/>
+        <Route path='viewpublisher' element={<AdminPublisherlist/>}/>
+        <Route path='viewuser' element={<AdminUserlist/>}/>
       </Route>
     </Routes>
   )
