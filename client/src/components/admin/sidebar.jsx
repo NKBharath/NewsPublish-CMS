@@ -31,7 +31,12 @@ function Adminsidebar() {
       >
         Add Publisher
       </div>
-      <div className="ml-2 text-2xl font-semibold tracking-tighter">
+      <div
+        className="ml-2 text-2xl font-semibold tracking-tighter"
+        onClick={() => {
+          navigate("/admin/editpublisher");
+        }}
+      >
         Edit Publisher
       </div>
       <div className="ml-2 text-2xl font-semibold tracking-tighter">

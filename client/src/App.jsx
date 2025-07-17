@@ -14,6 +14,7 @@ import Adminlayout from './components/admin/layout'
 import Addpublisher from './pages/admin/addpublisher'
 import AdminPublisherlist from './pages/admin/publisherlist'
 import AdminUserlist from './pages/admin/userlist'
+import AdminEditPublisher from './pages/admin/editpublisher'
 const App = () => {
   //const {user, isAuthenticated} = useSelector((state)=>(state.auth));
   const user = "admin";
@@ -48,9 +49,10 @@ const App = () => {
         </Checkauth>
       }>
         <Route path='home' element={<Adminhome/>}/>
-        <Route path='addpublisher' element={<Addpublisher/>}/>
         <Route path='viewpublisher' element={<AdminPublisherlist/>}/>
         <Route path='viewuser' element={<AdminUserlist/>}/>
+        <Route path='addpublisher' element={<Addpublisher/>}/>
+        <Route path='editpublisher' element={<AdminEditPublisher/>}/>
       </Route>
     </Routes>
   )

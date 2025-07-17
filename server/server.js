@@ -26,6 +26,9 @@ app.use(express.json());
 
 app.use('/api/auth',authroutes);
 app.use('/api/publisher', publisherroutes);
+
+
+
 app.use('/api/user', userroutes);
 
 
